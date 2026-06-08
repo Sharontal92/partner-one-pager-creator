@@ -715,7 +715,12 @@ def build_page2(data, styles, content_width, logos):
 # ── Main ───────────────────────────────────────────────────────────────────────
 def generate(data_path: str, output_dir: str) -> str:
     with open(data_path) as f:
-        data = json.load(f)
+        data = json.load(f) # Always use standard Optimove KPIs
+    data["kpis"] = [
+        {"value": "+88%", "label": "Improve campaign efficiency"},
+        {"value": "5.8X",  "label": "Increase ROI"},
+        {"value": "+33%", "label": "Increase in customer LTV"},
+    ]
 
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
